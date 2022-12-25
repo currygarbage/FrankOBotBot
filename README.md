@@ -8,6 +8,8 @@ This program comes with a GPL-3.0 license. Use this program however you'd like w
 
 As mentioned, this is the main source code that is officially used while running. We recommend tweaking the code to fit your own needs, as this script was designed with Frank Ocean lyrics in mind.
 
+For quick usage, change line 54 in the main file to the account that you want to reply to.
+
 ### Note
 Occasionaly, it will reply with an incorrect song title if the lyric is a close match. This is a result of Genius's end, apologies for the confusion.
 
