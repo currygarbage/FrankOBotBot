@@ -48,8 +48,12 @@ class listener(tweepy.StreamingClient):
         client.create_tweet(text=reply, in_reply_to_tweet_id=tweetID)
         print(reply)
 
+    def on_connection_error(self):
+        self.disconnect()
+
 keep_alive()
 
-streamingClient = listener(os.environ['BEARER_TOKEN'])
-streamingClient.add_rules(tweepy.StreamRule('from:frankolyricsbot'))
-streamingClient.filter()
+stream = listener(os.environ['BEARER_TOKEN'])
+stream.add_rules(tweepy.StreamRule('from:frankolyricsbot'))
+print(stream.get_rules())
+stream.filter()
