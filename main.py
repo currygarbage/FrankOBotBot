@@ -48,9 +48,11 @@ class listener(tweepy.StreamingClient):
         client.create_tweet(text=reply, in_reply_to_tweet_id=tweetID)
         print(reply)
 
-    def on_connection_error(self):
-        self.disconnect()
-
+    def on_error(self, status_code):
+      if status_code == 420:
+        print('Rate limit')
+        return False
+  
 keep_alive()
 
 stream = listener(os.environ['BEARER_TOKEN'])
