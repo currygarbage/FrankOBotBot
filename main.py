@@ -34,7 +34,7 @@ class listener(tweepy.StreamingClient):
 
         songName = genius.search_songs(lyric)['hits'][0]['result']['title']
 
-        if(songData['song']['album'] == None):
+        if songData['song']['album'] == None:
             albumName = songName
         else:
             albumName = songData['song']['album']['name'].strip()
@@ -43,7 +43,7 @@ class listener(tweepy.StreamingClient):
             if noAlbum[i] in albumName:
                 albumName = songName
 
-        if(albumName.endswith('.')):
+        if albumName.endswith('.'):
             reply = f'"{songName}" from album {albumName}'
         else:
             reply = f'"{songName}" from album {albumName}.'
