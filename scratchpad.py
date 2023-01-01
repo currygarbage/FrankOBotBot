@@ -5,6 +5,8 @@ import os
 
 genius = lyricsgenius.API(os.environ['GENIUS_TOKEN'])
 
+noAlbum = ['FO3*', 'Blonded Los Santos 97.8 FM [GTA V]', '7" Vinyl Single']
+
 lyric = 'TEST LYRIC HERE'
 
 song = genius.search_songs(lyric)['hits'][0]['result']
@@ -18,8 +20,9 @@ if(songData['song']['album'] == None):
 else:
     albumName = songData['song']['album']['name'].strip()
 
-if(albumName == 'FO3*'):
-    albumName = songName
+for i in range(len(noAlbum)):
+    if noAlbum[i] in albumName:
+        albumName = songName
 
 if(albumName.endswith('.')):
     reply = f'"{songName}" from album {albumName}'
