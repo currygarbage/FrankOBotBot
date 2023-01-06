@@ -1,6 +1,7 @@
 import tweepy
-import lyricsgenius
+import time
 import os
+from lyricsgenius import Genius
 from server import keep_alive
 
 client = tweepy.Client(
@@ -19,46 +20,46 @@ auth = tweepy.OAuth1UserHandler(
 )
 api = tweepy.API(auth)
 
-genius = lyricsgenius.API(os.environ['GENIUS_TOKEN']) 
+genius = Genius(os.environ['GENIUS_TOKEN'])
+
+prevTweets = api.user_timeline(screen_name='frankolyricsbot', count=1)
 
 noAlbum = ['FO3*', 'Blonded Los Santos 97.8 FM [GTA V]', '7" Vinyl Single']
 
-class listener(tweepy.StreamingClient):
-    def on_tweet(self, tweet):
+def reply(tweets):
+    for tweet in tweets:
         lyric = tweet.text.strip()
-        tweetID = tweet.id
+        tweetId = tweet.id
 
-        song = genius.search_songs(lyric)['hits'][0]['result']
-        id = song['id']
-        songData = genius.song(id)
+    song = genius.search_lyrics(lyric)
+    id = song['sections'][0]['hits'][0]['result']['id']
+    songData = genius.song(id)
 
-        songName = genius.search_songs(lyric)['hits'][0]['result']['title']
+    songName = song['sections'][0]['hits'][0]['result']['title']
+    if songData['song']['album'] == None:
+        albumName = songName
+    else:
+        albumName = songData['song']['album']['name'].strip()
 
-        if songData['song']['album'] == None:
+    for i in range(len(noAlbum)):
+        if noAlbum[i] in albumName:
             albumName = songName
-        else:
-            albumName = songData['song']['album']['name'].strip()
 
-        for i in range(len(noAlbum)):
-            if noAlbum[i] in albumName:
-                albumName = songName
+    if albumName.endswith('.'):
+        reply = f'"{songName}" from album {albumName}'
+    else:
+        reply = f'"{songName}" from album {albumName}.'
 
-        if albumName.endswith('.'):
-            reply = f'"{songName}" from album {albumName}'
-        else:
-            reply = f'"{songName}" from album {albumName}.'
+    client.create_tweet(text=reply, in_reply_to_tweet_id=tweetId)
 
-        client.create_tweet(text=reply, in_reply_to_tweet_id=tweetID)
-        print(reply)
-
-    def on_error(self, status_code):
-      if status_code == 420:
-        print('Rate limit')
-        return False
-  
 keep_alive()
 
-stream = listener(os.environ['BEARER_TOKEN'])
-stream.add_rules(tweepy.StreamRule('from:frankolyricsbot'))
-print(stream.get_rules())
-stream.filter()
+while True:
+    newTweets = api.user_timeline(screen_name='frankolyricsbot', count=1)
+    if newTweets == prevTweets:
+        print('No new tweets')
+    else:
+        print('Account tweeted')
+        reply(newTweets)
+    prevTweets = newTweets
+    time.sleep(30)
