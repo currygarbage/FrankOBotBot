@@ -3,7 +3,6 @@ import time
 import os
 import requests
 from lyricsgenius import Genius
-from server import keep_alive
 
 client = tweepy.Client(
     os.environ['BEARER_TOKEN'],
@@ -66,8 +65,6 @@ def getImage(tweets):
         with open(filename, 'wb') as image:
             for chunk in request:
                 image.write(chunk)
-
-keep_alive()
 
 while True:
     newTweets = api.user_timeline(screen_name='frankolyricsbot', count=1)
