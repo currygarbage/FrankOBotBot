@@ -1,6 +1,7 @@
 import tweepy
 import time
 import os
+import requests
 from lyricsgenius import Genius
 from server import keep_alive
 
@@ -50,7 +51,21 @@ def reply(tweets):
     else:
         reply = f'"{songName}" from album {albumName}.'
 
+    api.update_profile_image('temp.jpg')
     client.create_tweet(text=reply, in_reply_to_tweet_id=tweetId)
+    os.remove('temp.jpg')
+
+def getImage(tweets):
+    for tweet in tweets:
+        lyric = tweet.text.strip()
+
+    url = genius.search_songs(lyric)['hits'][0]['result']['song_art_image_url']
+    filename = 'temp.jpg'
+    request = requests.get(url, stream=True)
+    if request.status_code == 200:
+        with open(filename, 'wb') as image:
+            for chunk in request:
+                image.write(chunk)
 
 keep_alive()
 
@@ -60,6 +75,7 @@ while True:
         print('No new tweets')
     else:
         print('Account tweeted')
+        getImage(newTweets)
         reply(newTweets)
     prevTweets = newTweets
     time.sleep(30)
