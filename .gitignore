@@ -4,5 +4,5 @@ __pycache__
 # Scratchpad file
 test.py
 
-# Credentials for scratchpad
-secret.py
+# Credentials + other stuff
+info.py

@@ -3,24 +3,25 @@ import time
 import os
 import requests
 from lyricsgenius import Genius
+from info import credentials
 
 client = tweepy.Client(
-    os.environ['BEARER_TOKEN'],
-    os.environ['API_KEY'],
-    os.environ['API_SECRET'],
-    os.environ['ACCESS_TOKEN'],
-    os.environ['ACCESS_SECRET']
+    credentials['BEARER_TOKEN'],
+    credentials['API_KEY'],
+    credentials['API_SECRET'],
+    credentials['ACCESS_TOKEN'],
+    credentials['ACCESS_SECRET']
 )
 
 auth = tweepy.OAuth1UserHandler(
-    os.environ['API_KEY'],
-    os.environ['API_SECRET'],
-    os.environ['ACCESS_TOKEN'],
-    os.environ['ACCESS_SECRET']
+    credentials['API_KEY'],
+    credentials['API_SECRET'],
+    credentials['ACCESS_TOKEN'],
+    credentials['ACCESS_SECRET']
 )
 api = tweepy.API(auth)
 
-genius = Genius(os.environ['GENIUS_TOKEN'])
+genius = Genius(credentials['GENIUS_TOKEN'])
 
 prevTweets = api.user_timeline(screen_name='frankolyricsbot', count=1)
 
