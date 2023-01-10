@@ -10,7 +10,7 @@ Basic usage guide:
 3. install all needed dependencies. 
 4. Run the main file locally or on a VPS
 
-Every 30 seconds, it should print in the output if any new tweets have been by posted by the target account. If tweets have been posted, the bot will reply with the song and lyric name to the target account.
+Every 30 seconds, it should print in the output if any new tweets have been by posted by the target account. The bot will reply with the song and lyric name to the target account on new tweets, also changing its profile image to the album cover of the song.
 
 For any issues, please submit a GitHub issue and I will help you out.
 
