@@ -7,7 +7,7 @@ This program comes with a GPL-3.0 license. Use this program however you'd like w
 Basic usage guide: 
 1. Add all the necessary information in the info.example.py file 
 2. Rename it to info.py
-3. install all needed dependencies. 
+3. Install all needed dependencies. 
 4. Run the main file locally or on a VPS
 
 Every 30 seconds, it should print in the output if any new tweets have been by posted by the target account. The bot will reply with the song and lyric name to the target account on new tweets, also changing its profile image to the album cover of the song.
