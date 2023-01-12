@@ -1,8 +1,5 @@
 # Import needed dependencies
-import tweepy
-import time
 import os
-from lyricsgenius import Genius
 from info import credentials, info
 
 def reply(tweets, tweepyAPI, tweepyClient, geniusClient, noAlbum):
