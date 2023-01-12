@@ -17,7 +17,7 @@ For any issues, please submit a GitHub issue and I will help you out.
 ### Note
 Occasionaly, it will reply with an incorrect song title if the lyric is a close match. This is a result of Genius's end, apologies for the confusion.
 
-This isn't the official source code when used running. Check the source code out on [Replit](https://replit.com/@KrishRao1/Frank-Ocean-Bot-Bot?v=1).
+This isn't the official source code when used running. Instead, this is a more organized version for public usage. Check the source code out on [Replit](https://replit.com/@KrishRao1/Frank-Ocean-Bot-Bot?v=1).
 
 ### Thanks
 Thanks to [@mitskibotbot](https://twitter.com/mitskibotbot) for this Twitter bot idea.
