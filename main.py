@@ -35,7 +35,7 @@ noAlbum = info['noAlbum']
 
 # Listen for new tweets in comparison to prev. tweets
 while True:
-    newTweets = api.user_timeline(screen_name='frankolyricsbot', count=1)
+    newTweets = api.user_timeline(screen_name=info['account'], count=1)
     if newTweets == prevTweets:
         print('No new tweets')
     else:
