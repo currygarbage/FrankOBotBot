@@ -41,7 +41,7 @@ while True:
     else:
         print('Account tweeted')
         getImage(newTweets, genius, requests)
-        reply(newTweets, api, client, genius)
+        reply(newTweets, api, client, genius, noAlbum)
     prevTweets = newTweets
     
     # 30 sec. cool down to avoid overproccessing
