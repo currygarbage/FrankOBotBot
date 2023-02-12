@@ -1,6 +1,4 @@
 # FrankOBotBot
-This repository has been depreciated due to Twitter API access no longer being free.
-
 Replies to [@FrankOLyricsBot](https://twitter.com/FrankOLyricsBot) with the song name
 
 ### License
@@ -13,7 +11,7 @@ Basic usage guide:
 4. Install all needed dependencies. 
 5. Run the main file locally or on a VPS
 
-Every 30 seconds, it should print in the output if any new tweets have been by posted by the target account. The bot will reply with the song and lyric name to the target account on new tweets, also changing its profile image to the album cover of the song.
+Every 30 seconds, it should print in the output if any new tweets have been posted by the target account. The bot will reply with the song and lyric name to the target account on new tweets, also changing its profile image to the album cover of the song.
 
 For any issues, please submit a GitHub issue and I will help you out.
 
