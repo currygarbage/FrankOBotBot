@@ -1,15 +1,6 @@
-def getImage(tweets, geniusClient, requests):
-    # Set up clients
-    genius = geniusClient
+import requests
 
-    # Get tweet content
-    for tweet in tweets:
-        lyric = tweet.text.strip()
-
-    # Search for song to get album cover
-    url = genius.search_songs(lyric)['hits'][0]['result']['song_art_image_url']
-
-    # Turn link into image
+def getImage(url):
     filename = 'temp.jpg'
     request = requests.get(url, stream=True)
     if request.status_code == 200:
