@@ -77,11 +77,3 @@ else:
     #Update profile image
     api.update_profile_image('temp.jpg')
     os.remove('temp.jpg')
-
-"""
-# Update profile image and reply to account
-api.update_profile_image('temp.jpg')
-
-# Remove profile image from repository
-os.remove('temp.jpg')
-"""
