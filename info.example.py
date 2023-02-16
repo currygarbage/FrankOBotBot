@@ -11,12 +11,12 @@ credentials = {
     'GENIUS_TOKEN': 'nkfdsjakf;sajkfajk;lsad'
 }
 
-# Enter the account username you want yoru Twitter bot to reply to
+# Enter your bot username for 'account', enter the account you want to reply to in 'target'
 # Optionally, you can add a noAlbum list for songs that have funky album names on Genius
-# If you have no idea what that means, you can leave it blank 
-# 'noAlbum': []
+# If you have no idea what that means, you can leave it blank: 'noAlbum': []
 
 info = {
-    'account': 'frankolyricsbot',
+    'account': 'frankobotbot',
+    'target': 'frankolyricsbot',
     'noAlbum': ['FO3*', 'Blonded Los Santos 97.8 FM [GTA V]', '7" Vinyl Single']
 }
