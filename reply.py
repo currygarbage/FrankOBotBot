@@ -62,7 +62,7 @@ if albumName.endswith('.'):
 else:
     reply = f'"{songName}" from album {albumName}.'
 
-url = song['hits'][0]['result']['song_art_image_url']
+url = song['sections'][0]['hits'][0]['result']['song_art_image_url']
 
 # Print + tweet reply
 print(reply)
