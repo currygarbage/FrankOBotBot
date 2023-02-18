@@ -42,11 +42,11 @@ def main():
         inReplyTo = tweet.in_reply_to_status_id
 
     # Main lines of code that searches for the lyric
-    song = genius.search_lyrics(lyric)
-    id = song['sections'][0]['hits'][0]['result']['id']
+    song = genius.search_songs(lyric)
+    id = song['hits'][0]['result']['id']
     songData = genius.song(id)
 
-    songName = song['sections'][0]['hits'][0]['result']['title']
+    songName = song['hits'][0]['result']['title']
 
     # Get song name, album name
     if songData['song']['album'] == None:
@@ -63,7 +63,7 @@ def main():
     else:
         reply = f'"{songName}" from album {albumName}.'
 
-    url = song['sections'][0]['hits'][0]['result']['song_art_image_url']
+    url = song['hits'][0]['result']['song_art_image_url']
 
     # Print + tweet reply
     print(reply)
