@@ -3,12 +3,10 @@ Replies to [@FrankOLyricsBot](https://twitter.com/FrankOLyricsBot) with the song
 
 ## Usage
 This program comes with a GPL-3.0 license. Use this program however you'd like with no warranty.
-(I wouldn't recommend trying this as of now, I have yet to test this)
 
 ### Dependencies
 - [tweepy](https://pypi.org/project/tweepy/)
 - [lyricsgenius](https://pypi.org/project/lyricsgenius/)
-- [requests](https://pypi.org/project/requests/)
 - [A Twitter Developer account](https://developer.twitter.com)
 - [A Genius Developer app](https://genius.com/api-clients)
 

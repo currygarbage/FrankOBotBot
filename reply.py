@@ -1,34 +1,32 @@
 # Import needed dependencies
 import tweepy
-import os
 from lyricsgenius import Genius
 from info import credentials, info
-from getImage import getImage
-
-# Log into both Tweepy 2.0 and 1.0
-client = tweepy.Client(
-    credentials['BEARER_TOKEN'],
-    credentials['API_KEY'],
-    credentials['API_SECRET'],
-    credentials['ACCESS_TOKEN'],
-    credentials['ACCESS_SECRET']
-)
-
-auth = tweepy.OAuth1UserHandler(
-    credentials['API_KEY'],
-    credentials['API_SECRET'],
-    credentials['ACCESS_TOKEN'],
-    credentials['ACCESS_SECRET']
-)
-api = tweepy.API(auth)
-
-# Log into Genius
-genius = Genius(credentials['GENIUS_TOKEN'])
-
-# Set up no-album list
-noAlbum = info['noAlbum']
 
 def main():
+    # Log into both Tweepy 2.0 and 1.0
+    client = tweepy.Client(
+        credentials['BEARER_TOKEN'],
+        credentials['API_KEY'],
+        credentials['API_SECRET'],
+        credentials['ACCESS_TOKEN'],
+        credentials['ACCESS_SECRET']
+    )
+
+    auth = tweepy.OAuth1UserHandler(
+        credentials['API_KEY'],
+        credentials['API_SECRET'],
+        credentials['ACCESS_TOKEN'],
+        credentials['ACCESS_SECRET']
+    )
+    api = tweepy.API(auth)
+
+    # Log into Genius
+    genius = Genius(credentials['GENIUS_TOKEN'])
+
+    # Set up no-album list
+    noAlbum = info['noAlbum']
+
     # Get tweets from target account
     tweets = api.user_timeline(screen_name=info['target'], count=1)
     myTweets = api.user_timeline(screen_name=info['account'], count=1)
@@ -67,17 +65,11 @@ def main():
 
     # Print + tweet reply
     print(reply)
+    
     if (inReplyTo == tweetId):
         print('I already replied!')
     else:
         client.create_tweet(text=reply, in_reply_to_tweet_id=tweetId)
-
-        # Get album cover file
-        getImage(url)
-
-        #Update profile image
-        api.update_profile_image('temp.jpg')
-        os.remove('temp.jpg')
 
 if __name__ == '__main__':
     main()
