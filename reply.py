@@ -43,7 +43,7 @@ def main():
     if (inReplyTo == tweetId):
         print('I already replied!')
     else:
-        api.update_status(status=reply, in_reply_to_status_id=tweetId)
+        client.create_tweet(text=reply, in_reply_to_tweet_id=tweetId)
 
 if __name__ == '__main__':
     main()
