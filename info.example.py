@@ -1,14 +1,13 @@
 # Enter your Twitter API and Genius API credentials here
 # Rename this to info.py so it's hidden by gitignore
-# These are fake values, they won't work
 
 credentials = {
-    'API_KEY': 'jfsdakfklsafjkdsajklf;da;lfldsak',
-    'API_SECRET': 'kds;hjfdsjlafdkslajfkdsa;kflas',
-    'BEARER_TOKEN': r'jkdsljkfldsajlk;fdsadjisa',
-    'ACCESS_TOKEN': 'jdsakjfkslajf;lakfdslja',
-    'ACCESS_SECRET': 'kdfsjkflsajk;dfsa;jldsaffd',
-    'GENIUS_TOKEN': 'nkfdsjakf;sajkfajk;lsad'
+    'API_KEY': 'notrealvaluejgfjkfdsjkfdsk',
+    'API_SECRET': 'notrealvaluejgfjkfdsjkfdsk',
+    'BEARER_TOKEN': r'notrealvaluejgfjkfdsjkfdsk', # Keep the 'r' at the start
+    'ACCESS_TOKEN': 'notrealvaluejgfjkfdsjkfdsk',
+    'ACCESS_SECRET': 'notrealvaluejgfjkfdsjkfdsk',
+    'GENIUS_TOKEN': 'notrealvaluejgfjkfdsjkfdsk'
 }
 
 # Enter your bot username for 'account', enter the account you want to reply to in 'target'
